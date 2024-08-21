@@ -7,6 +7,7 @@ import { FaHeart } from "react-icons/fa";
 import { IoMdCart } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 const MenuTop = () => {
     let cartItems = useSelector((item)=>item.counter.CartItem)
 
@@ -74,7 +75,9 @@ const MenuTop = () => {
                     <icon className='text-[20px] text-[#fff]'><FaHeart/></icon>
                 </div>
                 <div className=" relative gap-[5px] flex">
+                    <Link to={'/Cart'}>
                     <icon className='text-[25px] text-[#fff]'><IoMdCart/></icon>
+                    </Link>
                     <h2 className='text-[14px] font-[500] text-[#fff] w-[20px] h-[20px] absolute top-[-20%] right-[-20%] rounded-[50%] bg-[red] flex justify-center items-center'>{cartItems.length}</h2>
                 </div>
             </div>

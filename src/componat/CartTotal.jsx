@@ -44,7 +44,7 @@ const CartTotal = ({CartData}) => {
         </div>
       </div>
       <div className="copon w-[100%]">
-        <h2 className='text-[20px] font-[600] text-[#1D3178] w-[100%] flex justify-center my-[20px]'>Cart Totals</h2>
+        <h2 className='text-[20px] font-[600] text-[#1D3178] w-[100%] flex justify-center my-[20px]'>Calculate Shopping</h2>
         <div className="coponBox bg-[#E8E6F1] w-[100%] p-[20px] h-[300px] rounded-[20px]">
           <input  className=' border-b-[1px] border-[#fff8f8]  w-[100%] h-[50px] text-[17px] font-[600] py-[20px] flex justify-between items-center outline-none bg-[#fff0]' placeholder='Bangladesh' type="text" />
           <input  className=' border-b-[1px] border-[#fff8f8]  w-[100%] h-[50px] text-[17px] font-[600] py-[20px] flex justify-between items-center outline-none bg-[#fff0]' placeholder='Mirpur Dhaka - 1200' type="text" />

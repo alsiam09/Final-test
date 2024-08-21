@@ -6,10 +6,10 @@ import { addToCart } from './slice/prodectSlice'
 const Productdesk = ({onprodata , onprodataX}) => {
   let dispatch = useDispatch()
   let navigate = useNavigate()
-
   
   
   let [ loading  , setloading ] = useState(false)
+  let [ sendToCat  , setsendToCat ] = useState(false)
   useEffect(()=>{
     setTimeout(()=>{
       setloading(true)
@@ -28,13 +28,15 @@ const Productdesk = ({onprodata , onprodataX}) => {
       )
     );
   });
-
-  let HandleAddToCart = (item) => {
-    if ((onprodata.stock) >= 1 ) {
-      dispatch(addToCart({...item , qun:1}))
-      navigate('/Cart')
-    }
-  }
+   let HandleAddToCart = (item) => {
+        if ((onprodata.stock) >= 1 ) {
+          dispatch(addToCart({...item , qun:1}))
+          setsendToCat(true)
+          setTimeout(()=>{
+            setsendToCat(false)
+          },[1000])
+        }
+      }
   
   
   return (
@@ -67,7 +69,7 @@ const Productdesk = ({onprodata , onprodataX}) => {
        <h3 className='text-[16px] text-[#151875] font-[600] mb-[10px]'>${onprodata.price} <span className=' ml-[10px] text-[#FB2E86]'>{onprodata.discountPercentage}% <span className=' uppercase '>discount</span></span> </h3>
        <p className='text-[#8A8FB9] w-[549px] font-[600] text-[16px] mb-[10px] block'>{onprodata.description}</p>
        <h2 className=' pb-[10px] text-[20px] text-[#FB2E86] font-[700]'>Stock : <span className='font-[500] text-[#000]'>{onprodata.stock}</span></h2>
-       <h2 onClick={()=>HandleAddToCart(onprodata)} className={`text-[18px]  w-[200px] ${(onprodata.stock) >= 1 ?'text-[#151875]':'text-[#ff0f0f]'} hover:bg-[#151875] rounded-[7px] font-[600] hover:text-[#fff] h-[40px] flex justify-center items-center`}>Add To cart</h2>
+       <h2 onClick={()=>HandleAddToCart(onprodata)} className={`text-[18px]  w-[200px] text-[#151875] ${sendToCat === true && 'bg-[#1dce1d] text-[#fff] hover:bg-[green]'} hover:bg-[#151875] rounded-[7px] font-[600] hover:text-[#fff] h-[40px] flex justify-center items-center`}>Add To cart</h2>
    </div>
 </div>
    }
