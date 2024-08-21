@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
+import { addToCart } from './slice/prodectSlice'
 const Productdesk = ({onprodata , onprodataX}) => {
+  let dispatch = useDispatch()
   let navigate = useNavigate()
+
+  
+  
   let [ loading  , setloading ] = useState(false)
   useEffect(()=>{
     setTimeout(()=>{
@@ -23,8 +29,11 @@ const Productdesk = ({onprodata , onprodataX}) => {
     );
   });
 
-  let HandleAddToCart = () => {
-    navigate('/Cart')
+  let HandleAddToCart = (item) => {
+    if ((onprodata.stock) >= 1 ) {
+      dispatch(addToCart({...item , qun:1}))
+      navigate('/Cart')
+    }
   }
   
   
@@ -56,9 +65,9 @@ const Productdesk = ({onprodata , onprodataX}) => {
        </div>
        <icon></icon>
        <h3 className='text-[16px] text-[#151875] font-[600] mb-[10px]'>${onprodata.price} <span className=' ml-[10px] text-[#FB2E86]'>{onprodata.discountPercentage}% <span className=' uppercase '>discount</span></span> </h3>
-       <p className='text-[#8A8FB9] w-[549px] font-[600] text-[16px] mb-[20px] block'>{onprodata.description}</p>
-
-       <h2 onClick={HandleAddToCart} className='text-[18px] text-[#151875] w-[200px] hover:bg-[#151875] rounded-[7px] font-[600] hover:text-[#fff] h-[40px] flex justify-center items-center'>Add To cart</h2>
+       <p className='text-[#8A8FB9] w-[549px] font-[600] text-[16px] mb-[10px] block'>{onprodata.description}</p>
+       <h2 className=' pb-[10px] text-[20px] text-[#FB2E86] font-[700]'>Stock : <span className='font-[500] text-[#000]'>{onprodata.stock}</span></h2>
+       <h2 onClick={()=>HandleAddToCart(onprodata)} className={`text-[18px]  w-[200px] ${(onprodata.stock) >= 1 ?'text-[#151875]':'text-[#ff0f0f]'} hover:bg-[#151875] rounded-[7px] font-[600] hover:text-[#fff] h-[40px] flex justify-center items-center`}>Add To cart</h2>
    </div>
 </div>
    }
