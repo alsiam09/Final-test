@@ -2,9 +2,9 @@ import React from 'react'
 import { FaPlus } from "react-icons/fa6";
 import { CgMathMinus } from "react-icons/cg";
 import { useDispatch } from 'react-redux';
-import { qunDec, qunInc, qunRem } from './slice/prodectSlice';
+import { clear, qunDec, qunInc, qunRem } from './slice/prodectSlice';
 import { IoCloseCircleSharp } from "react-icons/io5";
-
+import { Link } from 'react-router-dom';
 const CartProdectItem = ({CartData}) => {
     let dispatch = useDispatch()
     let handleIncre = ({ item , index}) => {
@@ -16,13 +16,16 @@ const CartProdectItem = ({CartData}) => {
     let HandleRem = (index) => {
         dispatch(qunRem(index))
     }
+    let HandleClearCart = (CartData) =>{
+        dispatch(clear(CartData))
+    }
   return (
     <div className="ItemBox py-[70px] w-[65%]">
         <div className="head mb-[40px] flex">
-            <h2 className='text-[18px] font-[600] text-[#1D3178] w-[35%] '>Product</h2>
-            <h2 className='text-[18px] font-[600] text-[#1D3178] w-[25%] flex justify-center'>Price</h2>
-            <h2 className='text-[18px] font-[600] text-[#1D3178] w-[25%] flex justify-center'>Quantity</h2>
-            <h2 className='text-[18px] font-[600] text-[#1D3178] w-[15%] flex justify-center'>Total</h2>
+            <h2 className='text-[20px] font-[600] text-[#1D3178] w-[35%] '>Product</h2>
+            <h2 className='text-[20px] font-[600] text-[#1D3178] w-[25%] flex justify-center'>Price</h2>
+            <h2 className='text-[20px] font-[600] text-[#1D3178] w-[25%] flex justify-center'>Quantity</h2>
+            <h2 className='text-[20px] font-[600] text-[#1D3178] w-[15%] flex justify-center'>Total</h2>
         </div>
         {CartData.map((item , index)=>(
              <div className="head py-[10px] border-b-[1px] border-[#000] mb-[5px] flex">
@@ -50,6 +53,10 @@ const CartProdectItem = ({CartData}) => {
                 </div>
          </div>
         ))}
+        <div className="bttomBox w-[100%] flex justify-between items-center">
+            <h2 className='w-[150px] h-[40px] rounded-[5px] flex items-center justify-center bg-[#FB2E86] text-[#fff] text-[17px] font-[500]' > <Link to={'/'}>Update Curt</Link> </h2>
+            <h2 onClick={()=>HandleClearCart(CartData)} className='w-[150px] h-[40px] rounded-[5px] flex items-center justify-center bg-[#FB2E86] text-[#fff] text-[17px] font-[500]' >clear Cart</h2>
+        </div>
     </div>
   )
 }

@@ -14,7 +14,7 @@ const Cart = () => {
       <CartHeader/>
       <div className="container flex gap-[30px] mx-auto">
         <CartProdectItem CartData={CartData}/>
-        <CartTotal/>
+        <CartTotal CartData={CartData} />
       </div>
     </section>
   )

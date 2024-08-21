@@ -37,11 +37,15 @@ export const prodectSlice = createSlice({
     qunRem:(state , action) =>{
       state.CartItem.splice(action.payload , 1)
       localStorage.setItem( "cart" , JSON.stringify(state.CartItem) )
+    },
+    clear:(state , action)=>{
+      state.CartItem.splice(action.payload)
+      localStorage.setItem( "cart" , JSON.stringify(state.CartItem) )
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addToCart , qunInc , qunDec , qunRem } = prodectSlice.actions
+export const { addToCart , qunInc , qunDec , qunRem , clear } = prodectSlice.actions
 
 export default prodectSlice.reducer
