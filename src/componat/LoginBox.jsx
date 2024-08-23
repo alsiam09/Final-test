@@ -4,6 +4,8 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { useDispatch } from 'react-redux'
 import { UserDetails } from './slice/prodectSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const LoginBox = () => {
   const db = getDatabase();
   const auth = getAuth();
@@ -30,7 +32,9 @@ onValue(starCountRef, (snapshot) => {
 });
   })
   let LoginNow = () => {
-    signInWithEmailAndPassword(auth, email, password)
+    toast("Processing")
+    setTimeout(() => {
+      signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
@@ -40,17 +44,36 @@ onValue(starCountRef, (snapshot) => {
       // ...
     })
     .then(()=>{
-      navigate('/')
+        toast('Login')
+        setTimeout(() => {
+          navigate('/')
+        }, 1500);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log(errorMessage);
+      
       setErrorLog(errorMessage);
       
     });  
+    }, 1500);
   }
   return (
+    
     <div className="Mainbox py-[70px] w-[100%]">
+      <ToastContainer
+position="top-center"
+autoClose={1200}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
         <div className="LoginBox rounded-[7px] p-[30px] bg-[#F8F8FB] w-[544px] h-[474px] mx-auto">
             <h2 className='text-[36px] font-[700] flex justify-center mb-[10px]'>Login</h2>
             <span className='text-[#9096B2] text-[17px] flex justify-center mb-[25px]' >Please login using account detail bellow.</span>

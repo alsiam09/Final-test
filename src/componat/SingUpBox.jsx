@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { getDatabase, ref, set, onValue } from "firebase/database";
 import { useDispatch } from 'react-redux';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const SingUpBox = () => {
     let dispatch = useDispatch()
     let [name, setname] = useState('')
@@ -48,18 +49,11 @@ const SingUpBox = () => {
 
     }
     
-    let valid = true;
-    useEffect(()=>{
 
-        if (!valid) {
-            return;
-        }
-        
-    },[valid])
     const handleSubmit = () => {
         const emailRegex  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const phoneRegex = /^(?:\+8801|8801|01)\d{9}$/;
-    
+        let valid = true;
         if ( (password.length) < 8 ) {
             setError5(true);
             valid = false
@@ -102,6 +96,7 @@ const SingUpBox = () => {
         if (!valid) {
             return;
         }
+        toast('Processing')
         setTimeout(() => {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
@@ -124,15 +119,19 @@ const SingUpBox = () => {
                     });
                 })
                 .then(() => {
-                    navigate('/Login');
+                    toast('Good job')
+                    setTimeout(() => {
+                        navigate('/Login');
+                    }, 1500);
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     console.log(errorCode);
                     setErrorLog(errorMessage);
+                    toast("Error")
                 });
-        }, 2000);
+        }, 1800);
     };
     
     useEffect(() => {
@@ -150,6 +149,18 @@ const SingUpBox = () => {
 
     return (
         <div className="Mainbox py-[70px] w-[100%]">
+            <ToastContainer
+position="top-center"
+autoClose={2000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
             <div className="LoginBox rounded-[7px] p-[30px] bg-[#F8F8FB] w-[544px] h-[700px] mx-auto">
                 <h2 className='text-[36px] font-[700] flex justify-center mb-[10px]'>Sing up</h2>
                 <span className='text-[#9096B2] text-[17px] flex justify-center mb-[25px]' >Please login using account detail bellow.</span>

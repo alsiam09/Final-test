@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { LogOutclear } from './slice/prodectSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const MenuTop = () => {
     let cartItems = useSelector((item)=>item.counter.CartItem)
     let User = useSelector((item)=>item.counter.userId)
@@ -31,7 +33,11 @@ const MenuTop = () => {
         setshow(false)
     }
     let LogOut = () =>{
-        dispatch(LogOutclear(User))
+        toast('LogOut processing')
+        setTimeout(() => {
+            dispatch(LogOutclear(User))
+            toast('Success')
+        }, 1000);
     }
     useEffect(()=>{
         let HandleclickoutSlide = (e) => {
@@ -52,6 +58,18 @@ const MenuTop = () => {
     
   return (
     <section className='bg-[#7E33E0] '>
+                    <ToastContainer
+position="top-center"
+autoClose={1000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
         <div className="container flex justify-between mx-auto h-[44px]">
             <div className="menuleft gap-[10px] flex items-center h-[100%] ">
                 <a href="mailto:alsiam.personal@gmail.com">
