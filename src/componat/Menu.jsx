@@ -5,10 +5,12 @@ import MenuButtom from './MenuButtom';
 
 const Menu = () => {
   return (
-    <>
-    <MenuTop/>
-    <MenuButtom/>
-    </>
+      <section className='h-[110px]'>
+        <section className='w-[100%] z-[999] fixed top-0 left-0'>
+          <MenuTop/>
+          <MenuButtom/>
+    </section>
+      </section>
   )
 }
 

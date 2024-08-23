@@ -42,8 +42,8 @@ const MenuButtom = () => {
       };
     
   return (
-    <section>
-    <div className="container flex justify-between mx-auto h-[60px]">
+    <section className='w-[100%] bg-[#fff]'> 
+    <div className="container flex justify-between mx-auto bg-[#fff] h-[60px]">
         <div className="menuleft gap-[90px] flex items-center h-[100%] ">
             <div className=" Logo gap-[10px] flex items-center h-[100%]">
                 <h1 className=' pb-[5px] text-[34px] font-[700]'>Hekto</h1>
