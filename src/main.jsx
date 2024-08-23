@@ -4,6 +4,7 @@ import './index.css'
 import { ContextApi } from './componat/ContextApi.jsx'
 import { Provider } from 'react-redux'
 import store from './store.js'
+import firebaseConfig from './firebaseConfig.js'
 createRoot(document.getElementById('root')).render(
   <ContextApi>
     <Provider store={store}>

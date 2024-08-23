@@ -4,6 +4,7 @@ export const prodectSlice = createSlice({
   name: 'prodect',
   initialState: {
     CartItem: localStorage.getItem("cart")? JSON.parse(localStorage.getItem("cart")):[],
+    userId: localStorage.getItem("userId")? JSON.parse(localStorage.getItem("userId")):[],
   },
   reducers: {
     addToCart: (state , action) => {
@@ -41,11 +42,23 @@ export const prodectSlice = createSlice({
     clear:(state , action)=>{
       state.CartItem.splice(action.payload)
       localStorage.setItem( "cart" , JSON.stringify(state.CartItem) )
-    }
+    },
+    UserDetails:( state , action )=>{
+      state.userId = [action.payload]
+      localStorage.setItem("userId" , JSON.stringify(state.userId))
+    },
+    LogOutclear:(state , action)=>{
+      state.userId.splice(action.payload)
+      localStorage.setItem("userId",JSON.stringify(state.userId))
+    },
+    UserID:(state , action)=>{
+      console.log(action);
+      
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addToCart , qunInc , qunDec , qunRem , clear } = prodectSlice.actions
+export const { addToCart , qunInc , qunDec , qunRem , clear , UserDetails , LogOutclear , UserID } = prodectSlice.actions
 
 export default prodectSlice.reducer

@@ -18,5 +18,4 @@ li button::before{
 .slick-dots {
     display: flex !important;
     justify-content: space-around !important;
-    margin-right: 100px !important;
 }

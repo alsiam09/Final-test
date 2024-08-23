@@ -8,10 +8,12 @@ const ProdectDetail = () => {
     let ProdectID = useParams()
     
     let [ onprodata , Setonprodata ] = useState([])
+    let [ onprodataX , SetonprodataX ] = useState([])
     
     const getdatajon = () => {
         axios.get(`https://dummyjson.com/products/${ProdectID.id}`).then((response)=>{
             Setonprodata(response.data);
+            SetonprodataX(response.data.images);
             
         })
     }
@@ -22,7 +24,7 @@ const ProdectDetail = () => {
     <section>
         <ProDetHead/>
         <div className="container mx-auto">
-            <Productdesk onprodata={onprodata}/>
+            <Productdesk onprodataX={onprodataX} onprodata={onprodata}/>
         </div>
     </section>
   )

@@ -6,11 +6,15 @@ import { FaUser } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
 import { IoMdCart } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { LogOutclear } from './slice/prodectSlice';
 const MenuTop = () => {
     let cartItems = useSelector((item)=>item.counter.CartItem)
-
+    let User = useSelector((item)=>item.counter.userId)
+    let dispatch = useDispatch()
+    console.log();
+    
     let navigate = useNavigate()
     let ShowUser = useRef()
     let ShowUser2 = useRef()
@@ -18,6 +22,16 @@ const MenuTop = () => {
     let GoLogin = () =>{
         navigate('/Login')
         setshow(false)
+    }
+    let MyAccountGo = () => {
+        navigate('/Myaccount')
+    }
+    let GoSingup = () =>{
+        navigate('/Singup')
+        setshow(false)
+    }
+    let LogOut = () =>{
+        dispatch(LogOutclear(User))
     }
     useEffect(()=>{
         let HandleclickoutSlide = (e) => {
@@ -58,18 +72,46 @@ const MenuTop = () => {
                     <span className='text-[16px] text-[#fff]'>USD</span>
                     <icon className='text-[25px] text-[#fff]'><IoIosArrowDown/></icon>
                 </div>
-                <div className=" relative ">
-                <div ref={ShowUser} className=" gap-[5px] flex">
-                    <span className='text-[16px] text-[#fff]'>Login</span>
-                    <icon className='text-[20px] text-[#fff]'><FaUser/></icon>
-                </div>
-                {show &&
-                <ul ref={ShowUser2} className="login absolute top-[35px] left-0 w-[200px]">
-                    <li onClick={GoLogin} className='text-[18px] font-[600] hover:bg-[#fff] hover:border-[3px] hover:text-[#000] hover:border-[#000] flex justify-center items-center h-[50px] bg-[black] text-[#fff]'>Login</li>
-                    <li className='text-[18px] font-[600] hover:bg-[#fff] hover:border-[3px] hover:text-[#000] hover:border-[#000] flex justify-center items-center h-[50px] bg-[black] text-[#fff]'>Sing up</li>
-                </ul>
-                }
-                </div>
+           { User.length > 0 ? 
+                <>
+                {User.map((item)=>(
+
+                item.map((Data)=>(
+                    
+                 <div className=" relative ">
+                    {console.log(Data)
+                    }
+                 <div ref={ShowUser} className=" gap-[5px] flex">
+                     <span className='text-[16px] text-[#fff]'>{Data.username}</span>
+                     <icon className='text-[20px] text-[#fff]'><FaUser/></icon>
+                 </div>
+                 {show &&
+                 <ul ref={ShowUser2} className="login absolute top-[35px] left-0 w-[200px]">
+                     <li onClick={MyAccountGo} className='text-[18px] font-[600] hover:bg-[#fff] hover:border-[3px] hover:text-[#000] hover:border-[#000] flex justify-center items-center h-[50px] bg-[black] text-[#fff]'>My Account</li>
+                     <li onClick={LogOut} className='text-[18px] font-[600] hover:bg-[#fff] hover:border-[3px] hover:text-[#000] hover:border-[#000] flex justify-center items-center h-[50px] bg-[black] text-[#fff]'>Log Out</li>
+                 </ul>
+                 }
+                 </div>
+        ))
+    ))}
+                       
+                </> :
+                <>
+                                    <div className=" relative ">
+                                    <div ref={ShowUser} className=" gap-[5px] flex">
+                                        <span className='text-[16px] text-[#fff]'>Login</span>
+                                        <icon className='text-[20px] text-[#fff]'><FaUser/></icon>
+                                    </div>
+                                    {show &&
+                                    <ul ref={ShowUser2} className="login absolute top-[35px] left-0 w-[200px]">
+                                        <li onClick={GoLogin} className='text-[18px] font-[600] hover:bg-[#fff] hover:border-[3px] hover:text-[#000] hover:border-[#000] flex justify-center items-center h-[50px] bg-[black] text-[#fff]'>Login</li>
+                                        <li onClick={GoSingup} className='text-[18px] font-[600] hover:bg-[#fff] hover:border-[3px] hover:text-[#000] hover:border-[#000] flex justify-center items-center h-[50px] bg-[black] text-[#fff]'>Sing up</li>
+                                    </ul>
+                                    }
+                                    </div>
+                </>
+                
+                                }  
                 <div className=" gap-[5px] flex">
                     <span className='text-[16px] text-[#fff]'>Wishlist</span>
                     <icon className='text-[20px] text-[#fff]'><FaHeart/></icon>
