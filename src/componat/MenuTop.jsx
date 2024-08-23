@@ -54,14 +54,18 @@ const MenuTop = () => {
     <section className='bg-[#7E33E0] '>
         <div className="container flex justify-between mx-auto h-[44px]">
             <div className="menuleft gap-[10px] flex items-center h-[100%] ">
-                <div className="email gap-[10px] flex">
+                <a href="mailto:alsiam.personal@gmail.com">
+                <div className="email cursor-pointer gap-[10px] flex">
                     <icon className='text-[25px] text-[#fff]'><MdOutlineEmail/></icon>
                     <span className='text-[16px] text-[#fff]'>alsiam.personal@gmail.com</span>
                 </div>
-                <div className="number gap-[10px] flex">
+                </a>
+                <a href="tel:+01813904257">
+                <div className="number cursor-pointer gap-[10px] flex">
                     <icon className='text-[25px] text-[#fff]'><IoCallSharp/></icon>
-                    <span className='text-[16px] text-[#fff]'>alsiam.personal@gmail.com</span>
+                    <span className=' text-[16px] text-[#fff]'>+880 1813 90 42 57</span>
                 </div>
+                </a>
             </div>
             <div className="menuright gap-[10px] flex items-center h-[100%] ">
                 <div className=" gap-[5px] flex">
@@ -81,12 +85,12 @@ const MenuTop = () => {
                  <div className=" relative ">
                     {console.log(Data)
                     }
-                 <div ref={ShowUser} className=" gap-[5px] flex">
+                 <div ref={ShowUser} className="cursor-pointer gap-[5px] flex">
                      <span className='text-[16px] text-[#fff]'>{Data.username}</span>
                      <icon className='text-[20px] text-[#fff]'><FaUser/></icon>
                  </div>
                  {show &&
-                 <ul ref={ShowUser2} className="login absolute top-[35px] left-0 w-[200px]">
+                 <ul ref={ShowUser2} className="cursor-pointer login absolute top-[35px] left-0 w-[200px]">
                      <li onClick={MyAccountGo} className='text-[18px] font-[600] hover:bg-[#fff] hover:border-[3px] hover:text-[#000] hover:border-[#000] flex justify-center items-center h-[50px] bg-[black] text-[#fff]'>My Account</li>
                      <li onClick={LogOut} className='text-[18px] font-[600] hover:bg-[#fff] hover:border-[3px] hover:text-[#000] hover:border-[#000] flex justify-center items-center h-[50px] bg-[black] text-[#fff]'>Log Out</li>
                  </ul>
@@ -98,12 +102,12 @@ const MenuTop = () => {
                 </> :
                 <>
                                     <div className=" relative ">
-                                    <div ref={ShowUser} className=" gap-[5px] flex">
+                                    <div ref={ShowUser} className=" cursor-pointer gap-[5px] flex">
                                         <span className='text-[16px] text-[#fff]'>Login</span>
                                         <icon className='text-[20px] text-[#fff]'><FaUser/></icon>
                                     </div>
                                     {show &&
-                                    <ul ref={ShowUser2} className="login absolute top-[35px] left-0 w-[200px]">
+                                    <ul ref={ShowUser2} className="login cursor-pointer absolute top-[35px] left-0 w-[200px]">
                                         <li onClick={GoLogin} className='text-[18px] font-[600] hover:bg-[#fff] hover:border-[3px] hover:text-[#000] hover:border-[#000] flex justify-center items-center h-[50px] bg-[black] text-[#fff]'>Login</li>
                                         <li onClick={GoSingup} className='text-[18px] font-[600] hover:bg-[#fff] hover:border-[3px] hover:text-[#000] hover:border-[#000] flex justify-center items-center h-[50px] bg-[black] text-[#fff]'>Sing up</li>
                                     </ul>
@@ -119,8 +123,8 @@ const MenuTop = () => {
                 <div className=" relative gap-[5px] flex">
                     <Link to={'/Cart'}>
                     <icon className='text-[25px] text-[#fff]'><IoMdCart/></icon>
-                    </Link>
                     <h2 className='text-[14px] font-[500] text-[#fff] w-[20px] h-[20px] absolute top-[-20%] right-[-20%] rounded-[50%] bg-[red] flex justify-center items-center'>{cartItems.length}</h2>
+                    </Link>
                 </div>
             </div>
         </div>

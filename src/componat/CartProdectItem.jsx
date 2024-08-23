@@ -32,7 +32,7 @@ const CartProdectItem = ({CartData}) => {
                 <div className="prodect gap-[10px] flex w-[35%]">
                     <img src={item.thumbnail} className=' rounded-[5px]  w-[80px] border-[3px] border-[#1D3178] h-[80px]' alt="" />
                     <div className=" relative imgBox">
-                    <icon onClick={()=>HandleRem(index)} className='top-0 right-0 bg-[#fff] rounded-[50%] text-[#000] text-[25px] absolute ' ><IoCloseCircleSharp/></icon>
+                    <icon onClick={()=>HandleRem(index)} className=' cursor-pointer top-0 right-0 bg-[#fff] rounded-[50%] text-[#000] text-[25px] absolute ' ><IoCloseCircleSharp/></icon>
                     </div>
                     <div className="title flex flex-wrap">
                         <h2 className='text-[15px] text-[#1D3178] font-[500]'>{item.title}</h2>
@@ -43,9 +43,9 @@ const CartProdectItem = ({CartData}) => {
                     <h2 className='text-[16px] text-[#1D3178] font-[600]'>${item.price}</h2>
                 </div>
                 <div className=" gap-[10px] prodect flex items-center justify-center w-[25%]">
-                    <h2 onClick={()=>handleIncre({item , index})} className='text-[#FB2E86] font-[700] text-[20px] '><FaPlus/></h2>
+                    <h2 onClick={()=>handleIncre({item , index})} className=' cursor-pointer text-[#FB2E86] font-[700] text-[20px] '><FaPlus/></h2>
                     <h2 className='text-[#1D3178] font-[700] text-[22px] '>{item.qun}</h2>
-                    <h2 onClick={()=>handleDncre(index)} className='text-[#FB2E86] font-[700] text-[20px] '><CgMathMinus/></h2>
+                    <h2 onClick={()=>handleDncre(index)} className=' cursor-pointer text-[#FB2E86] font-[700] text-[20px] '><CgMathMinus/></h2>
                 </div>
                 <div className="gap-[10px] prodect flex items-center justify-center w-[15%]">
                 <h2 className='text-[#1D3178] font-[700] text-[15px] '>${((item.price)*(item.qun)).toFixed(2)}</h2>
@@ -54,8 +54,8 @@ const CartProdectItem = ({CartData}) => {
          </div>
         ))}
         <div className="bttomBox w-[100%] flex justify-between items-center">
-            <h2 className='w-[150px] h-[40px] rounded-[5px] flex items-center justify-center bg-[#FB2E86] text-[#fff] text-[17px] font-[500]' > <Link to={'/'}>Update Curt</Link> </h2>
-            <h2 onClick={()=>HandleClearCart(CartData)} className='w-[150px] h-[40px] rounded-[5px] flex items-center justify-center bg-[#FB2E86] text-[#fff] text-[17px] font-[500]' >clear Cart</h2>
+            <h2 className=' cursor-pointer  w-[150px] h-[40px] rounded-[5px] flex items-center justify-center bg-[#FB2E86] text-[#fff] text-[17px] font-[500]' > <Link to={'/'}>Update Curt</Link> </h2>
+            <h2 onClick={()=>HandleClearCart(CartData)} className=' cursor-pointer w-[150px] h-[40px] rounded-[5px] flex items-center justify-center bg-[#FB2E86] text-[#fff] text-[17px] font-[500]' >clear Cart</h2>
         </div>
     </div>
   )

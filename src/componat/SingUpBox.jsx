@@ -160,7 +160,7 @@ const SingUpBox = () => {
                 <input onChange={PostPassValue} className={`${error5 === true ? "text-[red] border-[red]" : "text-[#9096B2]"} text-[17px] flex justify-center rounded border-[2px] my-[15px] outline-none px-[20px] border-[#9096B2] w-[100%] h-[52px]`} placeholder='Password' type="text" />
                 <input onChange={PostConPassValue} className={`${error6 === true ? "text-[red] border-[red]" : "text-[#9096B2]"} text-[17px] flex justify-center rounded border-[2px] my-[15px] outline-none px-[20px] border-[#9096B2] w-[100%] h-[52px]`} placeholder='Confirm Password' type="text" />
                 <span className='text-[#ff0000] text-[17px] flex justify-start mb-[25px]' >{errorLog}</span>
-                <h2 onClick={handleSubmit} className='w-[100%] h-[50px] bg-[#FB2E86] text-[#fff] text-[18px] mb-[35px] flex justify-center items-center rounded font-[600]'>Sing in</h2>
+                <h2 onClick={handleSubmit} className=' cursor-pointer w-[100%] h-[50px] bg-[#FB2E86] text-[#fff] text-[18px] mb-[35px] flex justify-center items-center rounded font-[600]'>Sing in</h2>
                 <span className='text-[#9096B2] text-[17px] flex justify-center ' >You have aolrade an Account<Link to={'/Login'} className='text-[#44df44] underline'>Login</Link></span>
             </div>
         </div>
