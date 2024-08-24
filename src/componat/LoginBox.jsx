@@ -39,20 +39,22 @@ onValue(starCountRef, (snapshot) => {
       // Signed in 
       const user = userCredential.user;
       console.log(user);
-      let userIdFilter = userData.filter((item)=>item.email === email)
-      dispatch(UserDetails(userIdFilter))
-      // ...
+      let userIdFilter = userData.filter((item)=>item.email === email , item.verify === "verify")
+      dispatch(UserDetails(userIdFilter))   
+      toast("Processing")
+  
     })
     .then(()=>{
         toast('Login')
         setTimeout(() => {
           navigate('/')
-        }, 1500);
+        }, 15000);
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;      
       setErrorLog(errorMessage);
+      toast('not verified')
       
     });  
     }, 1500);
