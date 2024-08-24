@@ -51,9 +51,7 @@ onValue(starCountRef, (snapshot) => {
     })
     .catch((error) => {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage);
-      
+      const errorMessage = error.message;      
       setErrorLog(errorMessage);
       
     });  
