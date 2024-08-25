@@ -27,6 +27,7 @@ const MenuTop = () => {
     }
     let MyAccountGo = () => {
         navigate('/Myaccount')
+        setshow(false)
     }
     let GoSingup = () =>{
         navigate('/Singup')
@@ -38,6 +39,7 @@ const MenuTop = () => {
             dispatch(LogOutclear(User))
             toast('Success')
         }, 50);
+        setshow(false)
     }
     useEffect(()=>{
         let HandleclickoutSlide = (e) => {

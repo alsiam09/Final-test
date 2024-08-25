@@ -1,8 +1,15 @@
 import React from 'react'
+import MyAccountHeader from '../componat/MyAccountHeader'
+import AccountUserDetail from '../componat/AccountUserDetail'
 
 const MyAccount = () => {
   return (
-    <div>MyAccount</div>
+    <section>
+      <MyAccountHeader/>
+      <div className="container mx-auto">
+        <AccountUserDetail/>
+      </div>
+    </section>
   )
 }
 

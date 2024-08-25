@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { useSelector } from 'react-redux';
 import { getDatabase, ref, set } from "firebase/database";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const CartTotal = ({ CartData }) => {
   let [userId, setuserId] = useState('')
   const db = getDatabase();
