@@ -39,22 +39,20 @@ onValue(starCountRef, (snapshot) => {
       // Signed in 
       const user = userCredential.user;
       console.log(user);
-      let userIdFilter = userData.filter((item)=>item.email === email , item.verify === "verify")
-      dispatch(UserDetails(userIdFilter))   
-      toast("Processing")
-  
-    })
-    .then(()=>{
-        toast('Login')
-        setTimeout(() => {
+      let userIdFilter = userData.filter((item)=>item.email === email && item.verify === "verify")
+      
+      if (userIdFilter.length > 0) {
+        dispatch(UserDetails(userIdFilter))     
           navigate('/')
-        }, 15000);
+      }else{
+        toast('not verified')
+
+      }
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;      
       setErrorLog(errorMessage);
-      toast('not verified')
       
     });  
     }, 1500);
@@ -66,7 +64,7 @@ onValue(starCountRef, (snapshot) => {
 position="top-center"
 autoClose={1200}
 hideProgressBar={false}
-newestOnTop={false}
+newestOnTop={true}
 closeOnClick
 rtl={false}
 pauseOnFocusLoss

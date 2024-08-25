@@ -37,7 +37,7 @@ const MenuTop = () => {
         setTimeout(() => {
             dispatch(LogOutclear(User))
             toast('Success')
-        }, 1000);
+        }, 50);
     }
     useEffect(()=>{
         let HandleclickoutSlide = (e) => {
