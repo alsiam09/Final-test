@@ -33,10 +33,12 @@ const CartTotal = ({ CartData }) => {
       item.map((UserIndex) => {
         set(ref(db, 'users/' + (UserIndex.userID)), {
           username: UserIndex.username ,
-          numder: numderre,
-          address: addressre,
+          numder: numderre.length > 0 ? numderre : UserIndex.numder ,
+          address: addressre.length > 0 ? addressre : UserIndex.address,
           country: countryre,
           userID: UserIndex.userID,
+          email: UserIndex.email,
+          verify: "verify",
         })
       })
     })
